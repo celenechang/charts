@@ -55,7 +55,7 @@ spec:
 {{ toYaml .Values.datadog.securityContext | indent 8 }}
       {{- end }}
       {{- if .Values.daemonset.useHostNetwork }}
-      hostNetwork: true
+      hostNetwork: {{ .Values.daemonset.useHostNetwork }}
       dnsPolicy: ClusterFirstWithHostNet
       {{- else }}
       {{- if .Values.daemonset.dnsPolicy }}
