@@ -58,8 +58,9 @@ spec:
       hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
       {{- else }}
-      hostNetwork: false
-      dnsPolicy: {{ if .Values.daemonset.dnsPolicy }}{{ .Values.daemonset.dnsPolicy }}{{ else }}ClusterFirst{{ end }}
+      {{- if .Values.daemonset.dnsPolicy }}
+      dnsPolicy: {{ .Values.daemonset.dnsPolicy }}
+      {{- end }}
       {{- end }}
       {{- if .Values.daemonset.dnsConfig }}
       dnsConfig:
