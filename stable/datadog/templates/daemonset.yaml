@@ -55,8 +55,18 @@ spec:
 {{ toYaml .Values.datadog.securityContext | indent 8 }}
       {{- end }}
       {{- if .Values.daemonset.useHostNetwork }}
-      hostNetwork: {{ .Values.daemonset.useHostNetwork }}
+      hostNetwork: true
       dnsPolicy: ClusterFirstWithHostNet
+      {{- else }}
+      hostNetwork: false
+      dnsPolicy: {{ if .Values.daemonset.dnsPolicy }}{{ .Values.daemonset.dnsPolicy }}{{ else }}ClusterFirst{{ end }}
+      {{- end }}
+      {{- if .Values.daemonset.dnsConfig }}
+      dnsConfig:
+{{ toYaml .Values.daemonset.dnsConfig | indent 8 }}
+      {{- end }}
+      {{- if .Values.daemonset.useHostPort }}
+      hostPort: {{ .Values.daemonset.useHostPort }}
       {{- end }}
       {{- if .Values.daemonset.useHostPID }}
       hostPID: {{ .Values.daemonset.useHostPID }}

@@ -619,6 +619,29 @@ daemonset:
   #
   # useHostNetwork: true
 
+  ## @param dnsPolicy - string - optional
+  ## Set pod-specific DNS policy. Accepted values are:
+  ## Default, ClusterFirst, ClusterFirstWithHostNet, None
+  ##
+  ## WARNING: This parameter will be ignored if useHostNetwork is true
+  #
+  # dnsPolicy: ClusterFirst
+
+  ## @param dnsConfig - string - optional (required if dnsPolicy is None)
+  ## Configure nameservers, searches and options. If dnsPolicy is None, at least
+  ## one nameserver is required. Otherwise all subparameters are optional.
+  #
+  # dnsConfig:
+  #   nameservers:
+  #     - 1.2.3.4
+  #   searches:
+  #     - ns1.svc.cluster-domain.example
+  #     - my.dns.search.suffix
+  #   options:
+  #     - name: ndots
+  #       value: "2"
+  #     - name: edns0
+
   ## @param useHostPort - boolean - optional
   ## Sets the hostPort to the same value of the container port. Needs to be used
   ## to receive traces in a standard APM set up. Can be used as for sending custom metrics.
