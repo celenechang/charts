@@ -57,6 +57,17 @@ spec:
       {{- if .Values.daemonset.useHostNetwork }}
       hostNetwork: {{ .Values.daemonset.useHostNetwork }}
       dnsPolicy: ClusterFirstWithHostNet
+      {{- else }}
+      {{- if .Values.daemonset.dnsPolicy }}
+      dnsPolicy: {{ .Values.daemonset.dnsPolicy }}
+      {{- end }}
+      {{- end }}
+      {{- if .Values.daemonset.dnsConfig }}
+      dnsConfig:
+{{ toYaml .Values.daemonset.dnsConfig | indent 8 }}
+      {{- end }}
+      {{- if .Values.daemonset.useHostPort }}
+      hostPort: {{ .Values.daemonset.useHostPort }}
       {{- end }}
       {{- if .Values.daemonset.useHostPID }}
       hostPID: {{ .Values.daemonset.useHostPID }}

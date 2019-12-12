@@ -292,6 +292,8 @@ helm install --name <RELEASE_NAME> \
 | `daemonset.nodeSelector`                 | Node selectors                                                                            | `nil`                                       |
 | `daemonset.affinity`                     | Node affinities                                                                           | `nil`                                       |
 | `daemonset.useHostNetwork`               | If true, use the host's network                                                           | `nil`                                       |
+| `daemonset.dnsPolicy`                    | Set DNS policy                                                                            | `nil`                                       |
+| `daemonset.dnsConfig`                    | Set DNS Config settings                                                                   | `nil`                                       |
 | `daemonset.useHostPID`.                  | If true, use the host's PID namespace                                                     | `nil`                                       |
 | `daemonset.useHostPort`                  | If true, use the same ports for both host and container                                   | `nil`                                       |
 | `daemonset.useDedicatedContainers`       | If true, each Datadog agent will run in a separate container                              | `nil`                                       |
